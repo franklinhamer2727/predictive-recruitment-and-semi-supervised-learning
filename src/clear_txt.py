@@ -17,17 +17,7 @@ sns.set()
 
 
 def remove_bad_lines(text_lines):
-    '''
-    Función que quitará (borrará) las líneas de texto que no son utiles o necesarias para el lenguajes que se analiza.
 
-    Parámetros
-    ----------
-    text_lines: (String) Líneas de texto
-
-    Retorno
-    -------
-    text_lines:
-    '''
     # Linea por linea
     bad_lines = []
     for line in text_lines:
@@ -47,18 +37,7 @@ def remove_bad_lines(text_lines):
 
 
 def clean_sentences(sentences):
-    '''
-    Función que realizará la limpieza de las oraciones retirando caracteres no alfanuméricos ni signos de puntuación
-    conocidos.
 
-    Parámetros
-    ----------
-    sentences:  (String) oraciones con posibles caracteres no deseados (símbolos).
-
-    Retorno
-    -------
-    clean_sentences: (String) oraciones limpias (sin símbolos extraños).
-    '''
     puntuation = '!"#$*,-/<=>?[\]:^_`{|}~—¿•¡“”…»«º²ª¼¾°½√φε✓'
     print("las puntuaciones son: ",puntuation)
     clean_sentences = []
@@ -78,19 +57,7 @@ def clean_sentences(sentences):
 
 
 def obtain_sentences(text_file, out_file):
-    '''
-    Función que realizará la obtención de oraciones limpias (sin símbolos extraños ni texto no deseado).
 
-    Parámetros
-    ----------
-    text_file:  (File) archivo de donde se extraerán las oraciones para su procesamiento.
-    out_file:   (File) archivo donde se almacenarán las oraciones limpias.
-
-    Retorno
-    -------
-    info: (DataSet) Retorna un DataSet con información sobre la cantidad total de líneas, cantidad de líneas limpias y
-    cantidad de oraciones limpias.
-    '''
     info = {}
     file = open(text_file, "r", encoding="utf-8")
     text = file.read()
@@ -121,20 +88,7 @@ def obtain_sentences(text_file, out_file):
 
 
 def process_files(files_names,finfo_name):
-    '''
-    Función principal que inicia el procesamiento de los archivos para su limpieza (eliminación de símbolos y textos que
-     no pertecen al lenguaje que se suministra).
 
-    Parámetros
-    ----------
-    files_names:    (File) nombre del archivo que se va procesar.
-    target_lang:    (String) Nombre del lenguaje que se está trabajando.
-    finfo_name:     (File)  Nombre del archivo donde se almacenarán los datos obtenidos de las oraciones procesadas.
-
-    Retorno
-    -------
-    Aparecerán archivos de texto plano con las oraciones limpias y un archivo CSV con información de lo procesado.
-    '''
     docs_info = []
     for source_file in files_names:
         # Obtener los archivos de texto
