@@ -11,6 +11,8 @@
 [TOC]
 
 #Información General
+
+Codigo de extracción de información importante del formato de texto semiestructurado en un currículum vitae o curriculum vitae y la clasificación de acuerdo con la preferencia de la empresa asociada y los requisitos
 #Tecnologias
 #Instalación
 #Colaboración
