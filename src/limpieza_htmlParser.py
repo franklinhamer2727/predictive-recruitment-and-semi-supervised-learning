@@ -8,7 +8,7 @@ import requests
 
 
 
-ruta = 'html_limpio/25.html'
+ruta = 'html_limpio/20.html'
 ficher = open(ruta,'r', encoding='utf-8')
 cadena  = ficher.read()
 lista = []
@@ -90,7 +90,8 @@ class header_bloques(HTMLParser):
 
 parserr = header_bloques()
 parserr.feed(cadena)
-print(parserr.data)
+
+#print(parserr.data)
 
 print(array_size)
 
@@ -100,21 +101,37 @@ class body_bloques(HTMLParser):
         super().__init__()
         self.data= []
         self.capture =False
+        self.cont =0
     def handle_starttag(self,tag,attrs):
         if tag in ('span'):
             if len(attrs)!=0:
                 for i in attrs:
-                    
-                    if 'font-size:'+str(valor)+'px' in i[1]:
+                    #print("hola",self.cont)
+                    if 'font-size:'+str(valor)+'px'  in i[1]:
+                        self.cont= self.cont+1
+                    if self.cont ==1:
+                        
                         self.capture=True
+                    # if self.cont >1:
+                    #     print("que tal")
+                    #     self.cont= 1
+
     def handle_endtag(self, tag):
         if tag in ('span'):
             self.capture=False
     def handle_data(self, data):
         if self.capture:
-            self.data.append(data)
+            self.data.append(data) 
 
+parsr = body_bloques()
+parsr.feed(cadena)
+f = parsr.data
+print(f)
+import os
 
+d= open("datos.txt","w")
+d.write(str(f))
+d.close()
 
 #Grafica la distribucion del tamaño de fuente
 # plt.bar(l[0], l1[0],color='orange',align='edge')
